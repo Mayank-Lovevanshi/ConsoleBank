@@ -54,7 +54,7 @@ listAccounts(sc,bankService);
 break;
 
 case "7":
-searchAccount(sc);
+searchAccount(sc,bankService);
 break;
 
 case "8":
@@ -139,9 +139,15 @@ System.out.println(transaction);
 }
 }
 
-public static void searchAccount(Scanner sc)
+public static void searchAccount(Scanner sc,BankService bankService)
 {
-
+System.out.print("Customer Name : ");
+String customerName = sc.nextLine().trim();
+List<Account> list = bankService.findAccountsByCustomerName(customerName);
+for(Account account : list)
+{
+System.out.println(account);
+}
 }
 
 }
